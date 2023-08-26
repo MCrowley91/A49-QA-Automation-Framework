@@ -14,16 +14,22 @@ public class Homework19 extends BaseTest{
         providePassword("Password");
         clickSubmit();
         Thread.sleep(2000);
-        WebElement playlistToDelete = driver.findElement(By.cssSelector("#playlists > ul > li:nth-child(5) > a"));
-        playlistToDelete.click();
+        selectPlaylistToDelete();
         Thread.sleep(2000);
-        WebElement deletePlaylistButton = driver.findElement(By.cssSelector("[title='Delete this playlist']"));
-        deletePlaylistButton.click();
+        clickDeleteButton();
         Assert.assertEquals(getSuccessMessage(), deletionConfirmation);
     }
 
     public String getSuccessMessage() {
         WebElement notificationMessage = driver.findElement(By.cssSelector(".success.show"));
         return notificationMessage.getText();
+    }
+    public void selectPlaylistToDelete() throws InterruptedException {
+        WebElement playlistToDelete = driver.findElement(By.cssSelector("#playlists > ul > li:nth-child(5) > a"));
+        playlistToDelete.click();
+    }
+    public void clickDeleteButton() throws InterruptedException {
+        WebElement deletePlaylistButton = driver.findElement(By.cssSelector("[title='Delete this playlist']"));
+        deletePlaylistButton.click();
     }
 }
