@@ -17,9 +17,16 @@ public class Homework19 extends BaseTest{
         selectPlaylistToDelete();
         Thread.sleep(2000);
         clickDeleteButton();
+        Thread.sleep(2000);
+        confirmDeletion();
+        Thread.sleep(2000);
         Assert.assertEquals(getSuccessMessage(), deletionConfirmation);
     }
 
+    public void confirmDeletion() throws InterruptedException {
+        WebElement okButton = driver.findElement(By.cssSelector(".ok"));
+        okButton.click();
+    }
     public String getSuccessMessage() {
         WebElement notificationMessage = driver.findElement(By.cssSelector(".success.show"));
         return notificationMessage.getText();
