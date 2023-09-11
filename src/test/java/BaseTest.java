@@ -36,12 +36,13 @@ public class BaseTest {
     LoginPage loginPage;
     RegistrationPage registrationPage;
 
-    @BeforeMethod
+    @BeforeTest
     public void setupTest() throws MalformedURLException {
         threadDriver.set(setupBrowser(System.getProperty("browser")));
         wait = new WebDriverWait(getThreadDriver(), Duration.ofSeconds(10));
         actions = new Actions(getThreadDriver());
         getThreadDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getThreadDriver().get(url);
 
     }
     @AfterMethod
@@ -52,7 +53,7 @@ public class BaseTest {
 //    public void closeBrowser() {
 //        driver.quit();
 //    }
-    WebDriver setupBrowser(String browser) throws MalformedURLException {
+        WebDriver setupBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.215:4444";
         switch(browser){
@@ -97,8 +98,6 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-popup-blocking");
         options.addArguments("--disable-notifications");
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
         return driver;
     }
 }

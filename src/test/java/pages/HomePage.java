@@ -20,7 +20,7 @@ public class HomePage extends BasePage {
     private WebElement userAvatarIcon;
 
     public WebElement getUserAvatar() {
-        return userAvatarIcon;
+        return findElement(userAvatarIcon);
     }
 
     public void checkAvatarIsDisplayed() {

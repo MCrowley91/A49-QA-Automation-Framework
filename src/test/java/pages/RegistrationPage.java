@@ -20,8 +20,7 @@ public class RegistrationPage extends BasePage{
     }
     @FindBy(css = "#app > div > div > form > div:nth-child(5) > a")
     private WebElement registrationButton;
-    public void registrationNavigation() {
-        wait.until(ExpectedConditions.elementToBeClickable(registrationButton)).click();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://qa.koel.app/registration");
+    public void clickRegistrationButton() {
+        findElement(registrationButton).click();
     }
 }

@@ -3,6 +3,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
@@ -15,11 +16,12 @@ import java.net.URI;
 
 public class Homework25 extends BaseTest {
     LoginPage loginPage;
+    HomePage homePage;
+    RegistrationPage registrationPage;
 
     @BeforeMethod
     public void testSetup(){
         loginPage = new LoginPage(getThreadDriver());
-        driver.get(url);
         homePage = new HomePage(getThreadDriver());
     }
 
@@ -28,13 +30,13 @@ public class Homework25 extends BaseTest {
         loginPage.provideEmail("mary.crowley@testpro.io")
                 .providePassword("Password")
                 .clickSubmit();
-        homePage.checkAvatarIsDisplayed();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 
     @Test (priority = 2, description = "Another Homework 25 Test")
     public void registrationButtonTest(){
         registrationPage = new RegistrationPage(getThreadDriver());
-
-        registrationPage.registrationNavigation();
+        registrationPage.clickRegistrationButton();
+        Assert.assertEquals(getThreadDriver().getCurrentUrl(), "https://qa.koel.app/registration");
     }
 }

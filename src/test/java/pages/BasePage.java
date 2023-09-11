@@ -19,12 +19,11 @@ public class BasePage {
     public BasePage (WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//        actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement findElement(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    public WebElement findElement(WebElement webElement) {
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
     }
     public void navigateToPage(String url) {
         driver.get(url);

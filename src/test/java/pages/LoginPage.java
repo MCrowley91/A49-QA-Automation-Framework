@@ -28,17 +28,17 @@ public class LoginPage extends BasePage {
     private WebElement submitButton;
 
     public LoginPage provideEmail(String email) {
-        wait.until(ExpectedConditions.elementToBeClickable(emailField)).clear();
+        findElement(emailField).clear();
         emailField.sendKeys(email);
         return this;
     }
     public LoginPage providePassword(String password) {
-        wait.until(ExpectedConditions.elementToBeClickable(passwordField)).clear();
+        findElement(passwordField).clear();
         passwordField.sendKeys(password);
         return this;
     }
     public LoginPage clickSubmit() {
-        wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
+        findElement(submitButton).click();
         return this;
     }
     public LoginPage login() {
