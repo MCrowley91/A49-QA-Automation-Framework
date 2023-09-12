@@ -41,7 +41,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupTest() throws MalformedURLException {
-        threadDriver.set(setupBrowser(System.getProperty("browser")));
+        threadDriver.set(setupBrowser(System.getProperty("browser", "chrome")));
         wait = new WebDriverWait(getThreadDriver(), Duration.ofSeconds(10));
         actions = new Actions(getThreadDriver());
         getThreadDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
