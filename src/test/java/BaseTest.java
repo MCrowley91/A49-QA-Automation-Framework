@@ -24,11 +24,6 @@ import java.time.Instant;
 import java.util.HashMap;
 
 public class BaseTest {
-    private static final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
-
-    public static WebDriver getThreadDriver() {
-        return threadDriver.get();
-    }
 
     public static WebDriver driver = null;
     public String url = "https://qa.koel.app/";
@@ -41,23 +36,14 @@ public class BaseTest {
 
     @BeforeMethod
     public void setupTest() throws MalformedURLException {
-        threadDriver.set(setupBrowser(System.getProperty("browser")));
-        wait = new WebDriverWait(getThreadDriver(), Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         actions = new Actions(driver);
-        getThreadDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        getThreadDriver().get(url);
 
     }
-
     @AfterMethod
     public void closeBrowser() {
-        threadDriver.get().close();
-        threadDriver.remove();
+    driver.quit();
     }
-
-    //    public void closeBrowser() {
-//        driver.quit();
-//    }
     WebDriver setupBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.215:4444";

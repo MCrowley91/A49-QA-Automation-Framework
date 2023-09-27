@@ -17,14 +17,14 @@ public class LoginTests extends BaseTest {
 
     @BeforeMethod
     public void testSetup(){
-        loginPage = new LoginPage(getThreadDriver());
-        homePage = new HomePage(getThreadDriver());
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
     }
 
     @Test (priority = 1, description = "Login correct credentials")
     public void loginTest(){
-        loginPage = new LoginPage(getThreadDriver());
-        homePage = new HomePage(getThreadDriver());
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
         loginPage.provideEmail("mary.crowley@testpro.io")
                 .providePassword("Password")
                 .clickSubmit();

@@ -87,8 +87,8 @@ public class HomePage extends BasePage {
     }
 
     public HomePage clickPlayNextSong() {
-        WebElement playNextSongButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[title='Play next song']")));
-        actions.moveToElement(playNextSongButton);
+        WebElement playNextSongButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Play next song']")));
+        //actions.moveToElement(playNextSongButton);
         playNextSongButton.click();
         return this;
     }
