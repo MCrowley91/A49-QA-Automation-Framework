@@ -14,12 +14,9 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class HomePage extends BasePage {
-    WebDriverWait wait;
-
-    Actions actions = null;
     public HomePage(WebDriver driver) {
         super(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         actions = new Actions(driver);
     }
 
@@ -86,11 +83,8 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage clickPlayNextSong() {
-        WebElement playNextSongButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Play next song']")));
-        //actions.moveToElement(playNextSongButton);
-        playNextSongButton.click();
-        return this;
+    public void clickPlayNextSong() {
+        findElement(playNextSongButton).click();
     }
 
     public HomePage doubleClickPlaylist() {

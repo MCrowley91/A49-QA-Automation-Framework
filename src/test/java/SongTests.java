@@ -15,8 +15,8 @@ public class SongTests extends BaseTest {
         loginPage.provideEmail("mary.crowley@testpro.io")
                  .providePassword("Password")
                  .clickSubmit();
-        homePage.clickPlayNextSong()
-                .checkPauseButtonIsDisplayed();
+        homePage.clickPlayNextSong();
+        homePage.checkPauseButtonIsDisplayed();
     }
 
     public void clickPlay() throws InterruptedException{
