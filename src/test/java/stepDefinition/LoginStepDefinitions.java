@@ -63,4 +63,11 @@ public class LoginStepDefinitions {
         HomePage homePage = new HomePage(driver);
         homePage.checkAvatarIsDisplayed();
     }
+    @Then("I remain on the login page")
+    public void userRemainsOnLoginPage(){
+        LoginPage loginPage = new LoginPage(driver);
+        String url = "https://qa.koel.app/";
+        driver.get(url);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
 }
