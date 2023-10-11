@@ -34,16 +34,6 @@ public class BaseTest {
     LoginPage loginPage;
     RegistrationPage registrationPage;
 
-    @BeforeMethod
-    public void setupTest() throws MalformedURLException {
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-        actions = new Actions(driver);
-
-    }
-    @AfterMethod
-    public void closeBrowser() {
-    driver.quit();
-    }
     WebDriver setupBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.215:4444";

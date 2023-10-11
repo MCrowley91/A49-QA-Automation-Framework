@@ -19,6 +19,7 @@ public class BasePage {
     public BasePage (WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        driver.manage().window().maximize();
         PageFactory.initElements(driver, this);
     }
     public WebElement findElement(WebElement webElement) {
@@ -31,7 +32,7 @@ public class BasePage {
         driver.quit();
     }
     public void clickOnElement(By locator){
-        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         el.click();
     }
     public void enterText(By locator, String text) {

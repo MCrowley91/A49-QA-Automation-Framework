@@ -7,20 +7,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.RegistrationPage;
 
 import java.time.Duration;
 
-public class LoginStepDefinitions {
+public class StepDefinitions {
     WebDriver driver;
     WebDriverWait wait;
     public Actions actions = null;
@@ -69,5 +68,31 @@ public class LoginStepDefinitions {
         String url = "https://qa.koel.app/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
+    @When("I click Registration button")
+    public void iClickRegistrationButton(){
+        RegistrationPage registrationPagePage = new RegistrationPage(driver);
+        registrationPagePage.clickRegistrationButton();
+    }
+    @Then("I am directed to Register new account or Reset your password page")
+    public void registrationPageRedirect(){
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        registrationPage.verifyRegistrationPageURL();
+    }
+
+    @And("I click Play Next Song button")
+    public void clickPlayNextSong(){
+        HomePage homePage = new HomePage(driver);
+        homePage.clickPlayNextSong();
+    }
+    @And("I click Play button")
+    public void clickPlay(){
+        HomePage homePage = new HomePage(driver);
+        homePage.clickPlay();
+    }
+    @Then("the Pause button appears")
+    public void pauseButtonAppears(){
+        HomePage homePage = new HomePage(driver);
+        homePage.checkPauseButtonIsDisplayed();
     }
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression">
+
+    <test name="Regression Test" preserve-order="false">
+        <classes>
+            <class name="CucumberRunner"/>
+            <class name="PlaylistTests">
+            <methods>
+                <include name="addSongToPlaylist"/>
+                <include name="createEmptyPlaylist"/>
+                <include name="deleteEmptyPlaylist"/>
+                <include name="renamePlaylist"/>
+            </methods>
+        </class>
+        </classes>
+    </test>
+</suite>

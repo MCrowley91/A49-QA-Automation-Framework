@@ -1,5 +1,5 @@
 Feature: Login functionality
-@Smoke
+@Smoke @Regression
   Scenario: Login success with correct email and password
     Given I open Login page
     When I enter email "mary.crowley@testpro.io"
